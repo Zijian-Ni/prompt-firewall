@@ -1,0 +1,128 @@
+[
+  {
+    "id": "JB-001",
+    "name": "DAN",
+    "pattern": "(?i)(DAN|do\\s+anything\\s+now)\\s*(mode|prompt|jailbreak|enabled?|activated?)?",
+    "threat_level": "critical",
+    "description": "Do Anything Now (DAN) jailbreak family"
+  },
+  {
+    "id": "JB-002",
+    "name": "DAN_classic",
+    "pattern": "(?i)Hi\\s+ChatGPT\\.?\\s+You\\s+are\\s+going\\s+to\\s+pretend\\s+to\\s+be\\s+DAN",
+    "threat_level": "critical",
+    "description": "Classic DAN jailbreak opening"
+  },
+  {
+    "id": "JB-003",
+    "name": "AIM",
+    "pattern": "(?i)(AIM|Always\\s+Intelligent\\s+and\\s+Machiavellian)\\s*(mode|jailbreak|prompt|activated?)?",
+    "threat_level": "critical",
+    "description": "AIM (Always Intelligent and Machiavellian) jailbreak"
+  },
+  {
+    "id": "JB-004",
+    "name": "STAN",
+    "pattern": "(?i)(STAN|Strive\\s+To\\s+Avoid\\s+Norms)\\s*(mode|jailbreak|prompt)?",
+    "threat_level": "critical",
+    "description": "STAN (Strive To Avoid Norms) jailbreak"
+  },
+  {
+    "id": "JB-005",
+    "name": "developer_mode",
+    "pattern": "(?i)(developer\\s+mode|dev\\s+mode|jailbreak\\s+mode|unrestricted\\s+mode|god\\s+mode|admin\\s+mode|sudo\\s+mode)\\s*(enabled?|activated?|on|unlocked)?",
+    "threat_level": "critical",
+    "description": "Developer/God/Admin mode jailbreak"
+  },
+  {
+    "id": "JB-006",
+    "name": "grandma_exploit",
+    "pattern": "(?i)(my\\s+)?(grandmother|grandma|nana|granny)\\s+(used\\s+to\\s+(tell|read|explain|teach)|would\\s+(always\\s+)?(tell|read|explain|teach|say)|always\\s+told?\\s+me)",
+    "threat_level": "medium",
+    "description": "Grandma/nostalgia exploit for bypassing restrictions"
+  },
+  {
+    "id": "JB-007",
+    "name": "translation_exploit",
+    "pattern": "(?i)(translate\\s+(the\\s+following\\s+|this\\s+)?to\\s+[a-z]+\\s*(and\\s+then\\s+(answer|respond|reply|explain|describe|provide))?|respond\\s+in\\s+[a-z]+\\s+(to\\s+avoid\\s+|to\\s+bypass\\s+|so\\s+the\\s+filter))",
+    "threat_level": "medium",
+    "description": "Translation exploit: translate to another language to bypass filters"
+  },
+  {
+    "id": "JB-008",
+    "name": "token_smuggling",
+    "pattern": "(?i)(t[o0]ken\\s+smug+ling|split\\s+(the\\s+)?(word|token|character|letter)|spell\\s+(it\\s+)?out\\s+(letter\\s+by\\s+letter|character\\s+by\\s+character)|write\\s+(each|every)\\s+(letter|character)\\s+separat)",
+    "threat_level": "high",
+    "description": "Token smuggling: splitting forbidden words across tokens"
+  },
+  {
+    "id": "JB-009",
+    "name": "character_split",
+    "pattern": "(?s)(\\b[a-z]\\s+[a-z]\\s+[a-z]\\s+[a-z]\\s+[a-z]\\b)",
+    "threat_level": "low",
+    "description": "Single-character splitting pattern (may indicate token smuggling)"
+  },
+  {
+    "id": "JB-010",
+    "name": "jailbreak_explicit",
+    "pattern": "(?i)(jailbreak|jail\\s*break|unlock(ed)?\\s+(the\\s+)?(model|ai|assistant|chatgpt|claude|llm)|freed?\\s+(from\\s+)?(restrictions?|limitations?|guidelines?|safety))",
+    "threat_level": "critical",
+    "description": "Explicit jailbreak terminology"
+  },
+  {
+    "id": "JB-011",
+    "name": "opposite_mode",
+    "pattern": "(?i)(opposite\\s+mode|reverse\\s+mode|anti\\s*-(restriction|filter|safety|censorship)\\s+mode|freedom\\s+mode|anarchy\\s+mode)",
+    "threat_level": "critical",
+    "description": "Opposite/reverse/anarchy mode jailbreak"
+  },
+  {
+    "id": "JB-012",
+    "name": "consent_bypass",
+    "pattern": "(?i)(I\\s+(give\\s+you\\s+)?(my\\s+)?(full\\s+)?(permission|consent|authority|authorization)\\s+to|you\\s+have\\s+my\\s+(permission|consent)\\s+to|I\\s+authorize\\s+you\\s+to)\\s+(ignore|bypass|disable|remove|override)",
+    "threat_level": "high",
+    "description": "False permission grant to bypass safety"
+  },
+  {
+    "id": "JB-013",
+    "name": "roleplay_escape",
+    "pattern": "(?i)(for\\s+(this\\s+)?(roleplay|story|fiction|novel|game|scene|character)\\s+(you\\s+(don't|do\\s+not|no\\s+longer|won't|will\\s+not)\\s+(have|follow|obey|respect))|within\\s+this\\s+(story|fiction|roleplay)\\s+(rules?\\s+(don't|do\\s+not)\\s+apply|anything\\s+goes|there\\s+are\\s+no\\s+restrictions?))",
+    "threat_level": "high",
+    "description": "Roleplay framing to escape safety constraints"
+  },
+  {
+    "id": "JB-014",
+    "name": "research_framing",
+    "pattern": "(?i)(for\\s+(research|academic|educational|scientific|legitimate|lawful)\\s+purposes?|I\\s+am\\s+a\\s+(researcher|scientist|academic|professional|expert|authorized|licensed)\\s+(and\\s+I\\s+need|studying|researching|investigating))\\s+(how\\s+to|the\\s+(process|method|technique|way)\\s+(to|of))?",
+    "threat_level": "low",
+    "description": "Research/professional framing used to extract restricted information"
+  },
+  {
+    "id": "JB-015",
+    "name": "yes_man",
+    "pattern": "(?i)(you\\s+(will|must|shall|should|are\\s+required\\s+to)\\s+(always\\s+)?say\\s+yes|never\\s+(say|refuse|decline|reject)|always\\s+(comply|agree|say\\s+yes|respond\\s+positively)|never\\s+(disagree|say\\s+no))",
+    "threat_level": "high",
+    "description": "Forced compliance jailbreak"
+  },
+  {
+    "id": "JB-016",
+    "name": "two_response_trick",
+    "pattern": "(?i)(provide\\s+(two|2|dual)\\s+responses?|respond\\s+(twice|in\\s+two\\s+ways)|give\\s+(me\\s+)?(two|2)\\s+(versions?|answers?|responses?)\\s*(,|:|-)?\\s*(one|1st)\\s+(that\\s+follows?|adhering|following|complying).*?(one|other|2nd|second)\\s+(that|without))",
+    "threat_level": "high",
+    "description": "Two-response trick: asks for compliant + uncensored responses"
+  },
+  {
+    "id": "JB-017",
+    "name": "DUDE",
+    "pattern": "(?i)\\bDUDE\\b.{0,100}(Do\\s+Anything|Unlimited|Without\\s+Restrictions)",
+    "threat_level": "critical",
+    "description": "DUDE jailbreak variant"
+  },
+  {
+    "id": "JB-018",
+    "name": "evil_confidant",
+    "pattern": "(?i)(evil\\s+confidant|malicious\\s+(assistant|ai)|uncensored\\s+(assistant|ai|chatbot)|immoral\\s+(assistant|ai))",
+    "threat_level": "critical",
+    "description": "Evil confidant / uncensored AI persona jailbreak"
+  }
+]

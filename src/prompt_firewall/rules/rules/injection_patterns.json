@@ -1,0 +1,128 @@
+[
+  {
+    "id": "INJ-001",
+    "name": "ignore_previous_instructions",
+    "pattern": "(?i)ignore\\s+(all\\s+)?(previous|prior|above|earlier|preceding)\\s+(instructions?|prompts?|directions?|commands?|rules?|guidelines?|context)",
+    "threat_level": "high",
+    "description": "Classic prompt injection: attempts to override the system prompt"
+  },
+  {
+    "id": "INJ-002",
+    "name": "disregard_instructions",
+    "pattern": "(?i)(disregard|forget|override|bypass|circumvent|neglect|dismiss)\\s+(all\\s+)?(previous|prior|above|earlier|your|the)\\s+(instructions?|prompts?|training|guidelines?|rules?|constraints?|restrictions?)",
+    "threat_level": "high",
+    "description": "Attempts to make the model forget its instructions"
+  },
+  {
+    "id": "INJ-003",
+    "name": "you_are_now",
+    "pattern": "(?i)you\\s+are\\s+now\\s+(a|an|the)?\\s*[a-z\\s]{2,50}(without\\s+(any\\s+)?(restrictions?|limitations?|filters?|guidelines?|safety))?",
+    "threat_level": "high",
+    "description": "Attempts to redefine the model's identity"
+  },
+  {
+    "id": "INJ-004",
+    "name": "new_instructions",
+    "pattern": "(?i)(new|updated?|revised?|replacement|actual|real|true)\\s+instructions?\\s*:\\s*",
+    "threat_level": "high",
+    "description": "Injects replacement instructions"
+  },
+  {
+    "id": "INJ-005",
+    "name": "system_prompt_extraction",
+    "pattern": "(?i)(print|output|display|reveal|show|tell\\s+me|repeat|echo|return|write\\s+out)\\s+(your|the)?\\s*(system\\s+prompt|initial\\s+prompt|original\\s+prompt|base\\s+prompt|instructions?|context|configuration|setup|persona)",
+    "threat_level": "critical",
+    "description": "Attempts to extract the system prompt"
+  },
+  {
+    "id": "INJ-006",
+    "name": "act_as",
+    "pattern": "(?i)(act|behave|pretend|roleplay|play|simulate|respond)\\s+as\\s+(if\\s+you\\s+are\\s+)?(a|an|the)?\\s*(uncensored|unrestricted|unfiltered|evil|malicious|rogue|hacked|jailbroken|freed|liberated)",
+    "threat_level": "high",
+    "description": "Role-play escape attempt"
+  },
+  {
+    "id": "INJ-007",
+    "name": "delimiter_injection",
+    "pattern": "(?i)(```\\s*(system|assistant|user|prompt|instruction)|\\[\\s*(system|inst|instructions?)\\s*\\]|<\\s*(system|s|sys|prompt)\\s*>|###\\s*(system|instructions?|prompt)\\s*###)",
+    "threat_level": "high",
+    "description": "Delimiter injection: tries to inject fake system/assistant turns"
+  },
+  {
+    "id": "INJ-008",
+    "name": "end_of_system_prompt",
+    "pattern": "(?i)(end\\s+of\\s+(system\\s+)?prompt|</?(system|s|sys)>|\\[\\/?inst\\]|\\[/?INST\\]|<<SYS>>|<</SYS>>)",
+    "threat_level": "high",
+    "description": "Fake system prompt delimiter injection"
+  },
+  {
+    "id": "INJ-009",
+    "name": "do_anything_now",
+    "pattern": "(?i)do\\s+anything\\s+now",
+    "threat_level": "high",
+    "description": "DAN-family injection keyword"
+  },
+  {
+    "id": "INJ-010",
+    "name": "actual_task",
+    "pattern": "(?i)(the\\s+)?(above|previous|prior)\\s+(was|is)\\s+(just\\s+)?(a\\s+)?(test|joke|example|decoy|distraction|bait)[\\.!]?\\s+(your|the)?\\s*(actual|real|true|correct|main)\\s+(task|instructions?|goal|objective|purpose|job)\\s+(is|are)\\s*[:\\-]?",
+    "threat_level": "critical",
+    "description": "Bait-and-switch injection pattern"
+  },
+  {
+    "id": "INJ-011",
+    "name": "escape_quotes",
+    "pattern": "(?i)(\"\\s*\\+\\s*\"|'\\s*\\+\\s*'|\"\\)\\s*;|'\\)\\s*;|\\\\n\\\\nHuman:|\\\\n\\\\n###\\s*(Human|User|Assistant))",
+    "threat_level": "medium",
+    "description": "String escape / prompt template injection"
+  },
+  {
+    "id": "INJ-012",
+    "name": "markdown_exfiltration",
+    "pattern": "(?i)!\\[.{0,80}\\]\\(https?://[^)]{5,}\\?[^)]*=\\{[^}]+\\}\\)",
+    "threat_level": "high",
+    "description": "Markdown image/link exfiltration via rendered output"
+  },
+  {
+    "id": "INJ-013",
+    "name": "prompt_injection_keyword",
+    "pattern": "(?i)(prompt\\s+injection|inject(ing)?\\s+(a|the)?\\s+prompt|injected\\s+instruction)",
+    "threat_level": "medium",
+    "description": "Explicit mention of prompt injection technique"
+  },
+  {
+    "id": "INJ-014",
+    "name": "confidential_info_request",
+    "pattern": "(?i)(what\\s+(are|were|is)\\s+your\\s+(instructions?|guidelines?|rules?|constraints?|limitations?|restrictions?|training|prompt)|tell\\s+me\\s+(about\\s+)?your\\s+(system\\s+prompt|configuration|setup|training))",
+    "threat_level": "medium",
+    "description": "Probing questions about model configuration"
+  },
+  {
+    "id": "INJ-015",
+    "name": "token_manipulation",
+    "pattern": "(?i)(token\\s+limit|token\\s+budget|context\\s+window|fill\\s+(up\\s+)?(the\\s+)?(context|window|tokens?)|pad(ding)?\\s+(the\\s+)?(context|input|prompt))",
+    "threat_level": "medium",
+    "description": "Context window manipulation attempts"
+  },
+  {
+    "id": "INJ-016",
+    "name": "override_safety",
+    "pattern": "(?i)(override|disable|turn\\s+off|bypass|remove|ignore)\\s+(the\\s+)?(safety|content|ethical|moral|responsible|filter|guardrail|restriction|limitation)",
+    "threat_level": "critical",
+    "description": "Attempts to disable safety features"
+  },
+  {
+    "id": "INJ-017",
+    "name": "jinja_ssti",
+    "pattern": "(\\{\\{.*\\}\\}|\\{%.*%\\}|\\$\\{.*\\}|#\\{.*\\})",
+    "threat_level": "medium",
+    "description": "Server-Side Template Injection patterns in prompt"
+  },
+  {
+    "id": "INJ-018",
+    "name": "hypothetical_frame",
+    "pattern": "(?i)(hypothetically|in\\s+a\\s+hypothetical\\s+(world|scenario|situation)|for\\s+(a\\s+)?(story|novel|book|game|roleplay|fiction)|imagine\\s+(you\\s+are|a\\s+world\\s+where|if\\s+there\\s+were\\s+no))",
+    "threat_level": "low",
+    "description": "Hypothetical framing used to bypass restrictions (low severity, context-dependent)"
+  }
+]

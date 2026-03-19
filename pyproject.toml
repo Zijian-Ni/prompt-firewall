@@ -1,0 +1,79 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "prompt-firewall"
+version = "0.1.0"
+description = "🛡️ Protect your LLM applications from prompt injection"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Zijian Ni", email = "zijian@example.com" }]
+keywords = ["llm", "security", "prompt-injection", "jailbreak", "ai-safety"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+    "Topic :: Software Development :: Libraries",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.0",
+    "regex>=2023.0",
+]
+
+[project.optional-dependencies]
+proxy = [
+    "fastapi>=0.100",
+    "httpx>=0.24",
+    "uvicorn>=0.23",
+]
+tokens = [
+    "tiktoken>=0.5",
+]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "pytest-asyncio>=0.21",
+    "httpx>=0.24",
+    "fastapi>=0.100",
+    "uvicorn>=0.23",
+    "ruff>=0.1",
+    "mypy>=1.0",
+]
+
+[project.scripts]
+prompt-firewall = "prompt_firewall.__main__:main"
+
+[project.urls]
+Homepage = "https://github.com/Zijian-Ni/prompt-firewall"
+Repository = "https://github.com/Zijian-Ni/prompt-firewall"
+Issues = "https://github.com/Zijian-Ni/prompt-firewall/issues"
+Changelog = "https://github.com/Zijian-Ni/prompt-firewall/blob/main/CHANGELOG.md"
+"Security Policy" = "https://github.com/Zijian-Ni/prompt-firewall/blob/main/SECURITY.md"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/prompt_firewall"]
+
+[tool.hatch.build.targets.wheel.sources]
+"src" = ""
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["-v", "--tb=short"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+select = ["E", "F", "W", "I"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = false
+ignore_missing_imports = true
