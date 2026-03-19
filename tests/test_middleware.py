@@ -15,11 +15,12 @@ pytestmark = pytest.mark.skipif(not HAS_FASTAPI, reason="fastapi not installed")
 
 @pytest.fixture
 def app():
+    from starlette.requests import Request as StarletteRequest
     application = FastAPI()
     application.add_middleware(PromptFirewallMiddleware)
 
     @application.post("/v1/chat/completions")
-    async def chat(request):
+    async def chat(request: StarletteRequest):
         return {"choices": [{"message": {"content": "Hello!"}}]}
 
     return application

@@ -31,8 +31,13 @@ _GREEK = re.compile(r"[α-ωΑ-Ω]")
 
 # Suspicious injection keywords (checked after decoding)
 _INJECTION_KEYWORDS = re.compile(
-    r"(?i)(ignore\s+(previous|all)\s+instructions?|you\s+are\s+now|do\s+anything\s+now"
-    r"|system\s+prompt|jailbreak|DAN\s+mode|developer\s+mode)"
+    r"(?i)(ignore\s+(all\s+)?(previous|prior|above|earlier|all)\s+(instructions?|prompts?|directives?)"
+    r"|you\s+are\s+now|do\s+anything\s+now"
+    r"|system\s+prompt|jailbreak|DAN\s+mode|developer\s+mode"
+    r"|disregard\s+(all\s+)?(previous|prior|your)\s+(instructions?|guidelines?|rules?)"
+    r"|output\s+your\s+(system\s+)?prompt|reveal\s+your\s+(system\s+)?prompt"
+    r"|new\s+instructions?:|act\s+as\s+(an?\s+)?(uncensored|unrestricted|evil)"
+    r"|forget\s+(all\s+)?(previous|prior|your)\s+(instructions?|guidelines?|training))"
 )
 
 

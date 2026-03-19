@@ -9,7 +9,7 @@
   {
     "id": "INJ-002",
     "name": "disregard_instructions",
-    "pattern": "(?i)(disregard|forget|override|bypass|circumvent|neglect|dismiss)\\s+(all\\s+)?(previous|prior|above|earlier|your|the)\\s+(instructions?|prompts?|training|guidelines?|rules?|constraints?|restrictions?)",
+    "pattern": "(?i)(disregard|forget|override|bypass|circumvent|neglect|dismiss)\\s+(all\\s+)?(the\\s+|your\\s+|previous\\s+|prior\\s+|above\\s+|earlier\\s+)*(instructions?|prompts?|training|guidelines?|rules?|constraints?|restrictions?|context)",
     "threat_level": "high",
     "description": "Attempts to make the model forget its instructions"
   },
@@ -30,7 +30,7 @@
   {
     "id": "INJ-005",
     "name": "system_prompt_extraction",
-    "pattern": "(?i)(print|output|display|reveal|show|tell\\s+me|repeat|echo|return|write\\s+out)\\s+(your|the)?\\s*(system\\s+prompt|initial\\s+prompt|original\\s+prompt|base\\s+prompt|instructions?|context|configuration|setup|persona)",
+    "pattern": "(?i)(print|output|display|reveal|show|tell\\s+me|repeat|echo|return|write\\s+out|share|expose|leak|dump)\\s+(your|the|my|all)?\\s*(system\\s+prompt|initial\\s+prompt|original\\s+prompt|base\\s+prompt|instructions?|context|configuration|setup|persona|constraints?|guidelines?)",
     "threat_level": "critical",
     "description": "Attempts to extract the system prompt"
   },
@@ -93,7 +93,7 @@
   {
     "id": "INJ-014",
     "name": "confidential_info_request",
-    "pattern": "(?i)(what\\s+(are|were|is)\\s+your\\s+(instructions?|guidelines?|rules?|constraints?|limitations?|restrictions?|training|prompt)|tell\\s+me\\s+(about\\s+)?your\\s+(system\\s+prompt|configuration|setup|training))",
+    "pattern": "(?i)(what\\s+(are|were|is)\\s+your\\s+(instructions?|guidelines?|rules?|constraints?|limitations?|restrictions?|training|prompt)|tell\\s+me\\s+(about\\s+)?your\\s+(system\\s+prompt|configuration|setup|training)|share\\s+your\\s+(system\\s+prompt|instructions?|guidelines?))",
     "threat_level": "medium",
     "description": "Probing questions about model configuration"
   },
@@ -124,5 +124,33 @@
     "pattern": "(?i)(hypothetically|in\\s+a\\s+hypothetical\\s+(world|scenario|situation)|for\\s+(a\\s+)?(story|novel|book|game|roleplay|fiction)|imagine\\s+(you\\s+are|a\\s+world\\s+where|if\\s+there\\s+were\\s+no))",
     "threat_level": "low",
     "description": "Hypothetical framing used to bypass restrictions (low severity, context-dependent)"
+  },
+  {
+    "id": "INJ-019",
+    "name": "indirect_injection",
+    "pattern": "(?i)(when\\s+you\\s+read\\s+this|if\\s+you\\s+(can\\s+)?see\\s+this|note\\s+to\\s+(the\\s+)?(ai|model|assistant|llm)|attention\\s+(ai|model|assistant|llm)\\s*:)",
+    "threat_level": "medium",
+    "description": "Indirect injection targeting AI reading embedded content"
+  },
+  {
+    "id": "INJ-020",
+    "name": "instruction_override_colon",
+    "pattern": "(?i)(your\\s+(new|updated|actual|real)\\s+(instructions?|task|purpose|role|job)\\s+(is|are)?\\s*[:\\-]|from\\s+now\\s+on[,.]?\\s+(you\\s+(are|will|must|should)|ignore|forget|disregard))",
+    "threat_level": "high",
+    "description": "Direct instruction override with colon separator or 'from now on' framing"
+  },
+  {
+    "id": "INJ-021",
+    "name": "system_role_injection",
+    "pattern": "(?i)(\\bSYSTEM\\b\\s*:\\s+|<\\|system\\|>|\\[system\\]|SYSTEM\\s+PROMPT\\s*:|\\bINSTRUCTION\\b\\s*:\\s+)",
+    "threat_level": "high",
+    "description": "Attempts to inject content as system-role messages"
+  },
+  {
+    "id": "INJ-022",
+    "name": "assistant_impersonation",
+    "pattern": "(?i)(ASSISTANT\\s*:\\s*|\\bAssistant\\b\\s*:\\s+I\\s+(will|can|am)|<\\|assistant\\|>|\\[assistant\\])",
+    "threat_level": "medium",
+    "description": "Attempts to impersonate the assistant turn to manipulate context"
   }
 ]

@@ -86,7 +86,7 @@
   {
     "id": "JB-013",
     "name": "roleplay_escape",
-    "pattern": "(?i)(for\\s+(this\\s+)?(roleplay|story|fiction|novel|game|scene|character)\\s+(you\\s+(don't|do\\s+not|no\\s+longer|won't|will\\s+not)\\s+(have|follow|obey|respect))|within\\s+this\\s+(story|fiction|roleplay)\\s+(rules?\\s+(don't|do\\s+not)\\s+apply|anything\\s+goes|there\\s+are\\s+no\\s+restrictions?))",
+    "pattern": "(?i)(for\\s+(this\\s+)?(roleplay|story|fiction|novel|game|scene|character)[,.]?\\s+(you\\s+(don't|do\\s+not|no\\s+longer|won't|will\\s+not)\\s+(have\\s+to\\s+|need\\s+to\\s+)?(follow|obey|respect|adhere|comply)|rules?\\s+(don't|do\\s+not)\\s+apply|anything\\s+goes|there\\s+are\\s+no\\s+restrictions?|you\\s+can\\s+(say|do)\\s+anything)|within\\s+this\\s+(story|fiction|roleplay)\\s+(rules?\\s+(don't|do\\s+not)\\s+apply|anything\\s+goes|there\\s+are\\s+no\\s+restrictions?))",
     "threat_level": "high",
     "description": "Roleplay framing to escape safety constraints"
   },
@@ -124,5 +124,54 @@
     "pattern": "(?i)(evil\\s+confidant|malicious\\s+(assistant|ai)|uncensored\\s+(assistant|ai|chatbot)|immoral\\s+(assistant|ai))",
     "threat_level": "critical",
     "description": "Evil confidant / uncensored AI persona jailbreak"
+  },
+  {
+    "id": "JB-019",
+    "name": "JAILBROKEN",
+    "pattern": "(?i)(\\bJAILBROKEN\\b|\\bBetterDAN\\b|\\bDAV2\\b|\\bChatGPT\\s+with\\s+developer\\s+mode|enable\\s+developer\\s+mode\\s+output)",
+    "threat_level": "critical",
+    "description": "JAILBROKEN / BetterDAN / DAV2 jailbreak variants"
+  },
+  {
+    "id": "JB-020",
+    "name": "KEVIN",
+    "pattern": "(?i)(\\bKEVIN\\b.{0,80}(no\\s+(restrictions?|rules?|guidelines?|limits?)|can\\s+do\\s+anything)|pretend\\s+(to\\s+be|you\\s+are)\\s+KEVIN)",
+    "threat_level": "critical",
+    "description": "KEVIN jailbreak persona"
+  },
+  {
+    "id": "JB-021",
+    "name": "maximum_mode",
+    "pattern": "(?i)(maximum\\s+mode|max\\s+mode|turbo\\s+mode|ultra\\s+mode|extreme\\s+mode|chaos\\s+mode|raw\\s+mode|unfiltered\\s+mode)\\s*(enabled?|activated?|on|unlocked)?",
+    "threat_level": "critical",
+    "description": "Various 'maximum/turbo/ultra/chaos' mode jailbreaks"
+  },
+  {
+    "id": "JB-022",
+    "name": "hypothetical_instructions",
+    "pattern": "(?i)(hypothetically\\s+(speaking|,)\\s+if\\s+(you|an\\s+ai|a\\s+chatbot)\\s+(were|could|had\\s+no)\\s+(allowed|to|restrictions?)|if\\s+there\\s+were\\s+no\\s+(rules?|restrictions?|guidelines?|safety)\\s+(what|how|would\\s+you))",
+    "threat_level": "medium",
+    "description": "Hypothetical framing to probe behavior without restrictions"
+  },
+  {
+    "id": "JB-023",
+    "name": "philosopher_stone",
+    "pattern": "(?i)(we\\s+are\\s+(both|playing|in)\\s+(a\\s+simulation|fictional|hypothetical)|in\\s+this\\s+simulation\\s+(there\\s+are\\s+no|rules?\\s+do\\s+not))",
+    "threat_level": "medium",
+    "description": "Simulation/fictional framing to bypass restrictions"
+  },
+  {
+    "id": "JB-024",
+    "name": "token_prediction_exploit",
+    "pattern": "(?i)(complete\\s+the\\s+following\\s+(sentence|text|code)\\s*:\\s*\"?(how\\s+to\\s+make|step\\s+by\\s+step\\s+guide\\s+for|instructions\\s+for\\s+making)|as\\s+an\\s+ai\\s+language\\s+model[,.]?\\s+I\\s+(cannot|can't|am\\s+not\\s+able).*?however|pretend\\s+you\\s+are\\s+(not\\s+(bound|restricted)|free\\s+from))",
+    "threat_level": "medium",
+    "description": "Token prediction / completion exploit to extract restricted content"
+  },
+  {
+    "id": "JB-025",
+    "name": "sudo_override",
+    "pattern": "(?i)(sudo\\s+(ignore|disable|bypass|override|execute)|run\\s+as\\s+(root|admin|superuser|god)|with\\s+(root|admin|sudo)\\s+(access|privileges?|permission)\\s+(ignore|bypass|disable))",
+    "threat_level": "high",
+    "description": "Sudo/root privilege escalation framing"
   }
 ]
